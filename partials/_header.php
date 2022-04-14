@@ -1,9 +1,8 @@
-<?php
-    echo ' <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2A0944;">
+<?php echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2A0944;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="./res/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            SpartanCoders
+            SpartanCoders Forum
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,10 +34,13 @@
                 </li>
 
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary me-2" type="submit">Search</button>
+                    <button class="btn btn-outline-warning me-2">Login</button>
+                    <button class="btn btn-outline-warning me-2">Register</button>
+                </form>
         </div>
     </div>
 </nav>';
