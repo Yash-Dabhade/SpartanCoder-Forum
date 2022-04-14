@@ -16,6 +16,24 @@
 
     <?php include './partials/_header.php' ?>
 
+    <!-- Intro to the forum -->
+    <div class="container m-5">
+
+        <div class="row align-items-center">
+            <div class="col">
+                <h1 class="display-5">Welcome to the online discussion forum for <span class=" font-monospace fw-bold placeholder-glow" style="color:#F2B23E ">
+                        Computer Science Spartans
+                    </span>
+                </h1>
+                <button class="btn my-3 btn-warning fw-bold fs-3 font-monospace text-light placeholder-wave shadow-sm ">Explore Now</button>
+            </div>
+            <div class="col">
+                <img src="./res/landingPage/top.jpg" class="img-fluid " alt="">
+            </div>
+        </div>
+
+    </div>
+
 
 
 

@@ -38,8 +38,8 @@
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary me-2" type="submit">Search</button>
-                    <button class="btn btn-outline-warning me-2">Login</button>
-                    <button class="btn btn-outline-warning me-2">Register</button>
+                    <button class="btn btn-outline-warning   me-2">Login</button>
+                    <button class="btn btn-outline-warning   me-2">Register</button>
                 </form>
         </div>
     </div>
