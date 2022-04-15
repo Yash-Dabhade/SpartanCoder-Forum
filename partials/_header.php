@@ -1,4 +1,8 @@
-<?php echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2A0944;">
+<?php
+include 'partials/_loginmodal.php';
+include 'partials/_signmodal.php';
+
+echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2A0944;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img src="./res/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
@@ -38,9 +42,9 @@
                 <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-primary me-2" type="submit">Search</button>
-                    <button class="btn btn-outline-warning   me-2">Login</button>
-                    <button class="btn btn-outline-warning   me-2">Register</button>
                 </form>
+                <button class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                <button class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#signModal">Register</button>
         </div>
     </div>
 </nav>';
