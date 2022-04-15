@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="./styles/indexPage.css">
     <title>SpartanCoders Forum</title>
 </head>
 
@@ -31,8 +34,63 @@
                 <img src="./res/landingPage/top.jpg" class="img-fluid " alt="">
             </div>
         </div>
-
     </div>
+
+
+    <!-- Trending -->
+    <div class="container-fluid rounded">
+        <h2 class="text-center my-4">Trending Categories</h2>
+
+        <div class="row align-items-center justify-content-center rounded" id="trending">
+            <div class="col-md-3">
+                <div class="card  my-4" style="width: 18rem;">
+                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card  my-4" style="width: 18rem;">
+                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card  my-4" style="width: 18rem;">
+                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card  my-4" style="width: 18rem;">
+                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+
+
 
 
 
