@@ -20,6 +20,7 @@
 <body>
 
     <?php include './partials/_header.php' ?>
+    <?php include './partials/_dbconnect.php' ?>
 
     <!-- Intro to the forum -->
     <div class="container m-5">
@@ -44,49 +45,39 @@
         <div class="rounded-pill " style="background-color: #2A0944;">
             <h2 class="text-center my-4" style="font-family: 'Kanit', sans-serif; color:white">Trending Categories</h2>
         </div>
-        <div class="row align-items-center justify-content-center rounded" id="trending">
-            <div class="col-md-3 my-4 ">
-                <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4" style="width: 18rem;">
-                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card shadow-lg p-3 mb-5 bg-body rounded  my-4" style="width: 18rem;">
-                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 my-4">
-                <div class="card shadow-lg p-3 mb-5 bg-body rounded  my-4" style="width: 18rem;">
-                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4" style="width: 18rem;">
-                    <img src="https://images.hdqwalls.com/download/code-sign-1920x1200.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
-                    </div>
-                </div>
-            </div>
+        <div class="row my-2 row-cols-1 row-cols-md-4 g-4  align-items-center justify-content-center rounded" id="trending">
 
+            <!--Fetching data from the categories  -->
+            <?php
+            $sql = "SELECT * FROM `categories`";
+            $result = mysqli_query($conn, $sql);
+            $limit = 0;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $limit + 1;
+                if ($limit > 8)
+                    break;
+                $catID = $row['category_id'];
+                $catTitle = $row['category_title'];
+                $catDesc = $row['category_description'];
+                $catImg = $row['imgurl'];
+
+                echo '
+                <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4 h-100" style="width: 18rem;">
+                        <img src=' . $catImg . ' class="card-img-top img-thumbnail" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $catTitle . '</h5>
+                            <p class="card-text">' . substr($catDesc, 0, 45) . '...</p>  
+                        </div>
+                        <div class="card-footer">
+                             <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
+                        </div>
+                    </div>
+            </div>';
+            }
+            ?>
         </div>
+
     </div>
     </div>
 
