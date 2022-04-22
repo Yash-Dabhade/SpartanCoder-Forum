@@ -21,39 +21,32 @@
 
     <?php include './partials/_header.php' ?>
     <?php include './partials/_dbconnect.php' ?>
-    <?php
-    $id = $_GET['catid'];
-    $sql = "SELECT * FROM `categories` WHERE `category_id` = $id;";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    $catTitle = $row['category_title'];
-    ?>
+
 
     <!-- Rules -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col order-first figure">
-                <img src="./res/threadsListImg2.gif" class=" g-col-md-4 figure-img img-fluid rounded" alt="...">
-
-            </div>
-            <div class="col order-last m-2 container-md border border-secondary shadow p-2 mb-5 bg-body rounded">
-                <h4 class="text-center fs-3 my-2 ">Rules for the <?php echo $catTitle ?> Forum</h4>
-                <ul class="p-4  list-group">
-                    <li class="list-group-item">No Spam / Advertising / Self-promote in the forums</li>
-                    <li class="list-group-item">Do not post copyright-infringing material</li>
-                    <li class="list-group-item">Do not post “offensive” posts, links or images</li>
-                    <li class="list-group-item">Remain respectful of other members at all times</li>
-                    <li class="list-group-item">Do not offer to pay for help</li>
-                </ul>
-            </div>
+            <?php
+            $id = $_GET['threadid'];
+            $sql = "SELECT * FROM `threads` WHERE `thread_id` = $id;";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $thread_id = $row['thread_id'];
+            $title = $row['thread_title'];
+            $desc = $row['thread_desc'];
+            echo ' <div class="col  order-last m-4 p-4 container-md border border-secondary shadow p-2 mb-5 bg-body rounded">
+            <h4 class="fs-3 my-2 ">' . $title . '</h4>
+            <p class="fs-5">' . $desc . '</p>
+            </div>';
+            ?>
         </div>
     </div>
 
     <div class="container-fluid">
-        <p class="fs-3 text-center">Browse Questions for <?php echo $catTitle ?></p>
+        <p class="fs-3 text-center">Discussions</p>
         <div class="container-xl my-2">
             <div class="container-md  rounded">
-                <!-- Questions here -->
+                <!-- Questions here
                 <?php
                 $id = $_GET['catid'];
                 $sql = "SELECT * FROM `threads` WHERE `thread_cat_id` = $id;";
@@ -74,7 +67,7 @@
                 } else {
                     echo '<div class="text-center link-danger fs-3" >No threads found ! </div>';
                 }
-                ?>
+                ?> -->
             </div>
         </div>
 
