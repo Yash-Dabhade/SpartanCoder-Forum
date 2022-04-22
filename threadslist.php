@@ -21,7 +21,13 @@
 
     <?php include './partials/_header.php' ?>
     <?php include './partials/_dbconnect.php' ?>
-
+    <?php
+    $id = $_GET['catid'];
+    $sql = "SELECT * FROM `categories` WHERE `category_id` = $id;";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $catTitle = $row['category_title'];
+    ?>
 
     <!-- Rules -->
     <div class="container-fluid">
@@ -31,7 +37,7 @@
 
             </div>
             <div class="col order-last m-2 container-md border border-secondary shadow p-2 mb-5 bg-body rounded">
-                <h4 class="text-center fs-3 my-2 ">Rules for the Forum</h4>
+                <h4 class="text-center fs-3 my-2 ">Rules for the <?php echo $catTitle ?> Forum</h4>
                 <ul class="p-4  list-group">
                     <li class="list-group-item">No Spam / Advertising / Self-promote in the forums</li>
                     <li class="list-group-item">Do not post copyright-infringing material</li>
@@ -44,18 +50,30 @@
     </div>
 
     <div class="container-fluid">
-        <p class="fs-3 text-center">Browse Questions</p>
+        <p class="fs-3 text-center">Browse Questions for <?php echo $catTitle ?></p>
         <div class="container-xl my-2">
             <div class="container-md  rounded">
                 <!-- Questions here -->
-                <div class="card p-2 m-3">
+                <?php
+                $id = $_GET['catid'];
+                $sql = "SELECT * FROM `threads` WHERE `thread_cat_id` = $id;";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $title = $row['thread_title'];
+                $desc = $row['thread_desc'];
+                if ($title) {
+                    echo ' <div class="card p-2 m-3">
                     <h5 class="card-header">Featured</h5>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <h5 class="card-title">' . $title . '</h5>
+                        <p class="card-text">' . $desc . '</p>
                         <a href="#" class="btn btn-warning" style="color:white;">Go somewhere</a>
                     </div>
-                </div>
+                </div>';
+                } else {
+                    echo '<div class="text-center link-danger fs-3" >No threads found ! </div>';
+                }
+                ?>
             </div>
         </div>
 

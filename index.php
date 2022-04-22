@@ -70,7 +70,7 @@
                             <p class="card-text">' . substr($catDesc, 0, 45) . '...</p>  
                         </div>
                         <div class="card-footer">
-                             <a href="#" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
+                             <a href="threadslist.php?catid=' . $catID . '" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
                         </div>
                     </div>
             </div>';
