@@ -21,7 +21,19 @@
 
     <?php include './partials/_header.php' ?>
     <?php include './partials/_dbconnect.php' ?>
-
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $id = $_GET['threadid'];
+        $comment = $_POST['comment'];
+        $user_id = 0;
+        $sql = "INSERT INTO `comments` (`comment_id`, `comment`, `comment_by`, `timestamp`, `thread_id`) VALUES (NULL, '$comment', '$user_id', current_timestamp(), '$id')";
+        $result = mysqli_query($conn, $sql);
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success ! </strong> Comment Posted Successfully .
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+    ?>
 
     <!-- Thread Details -->
     <div class="container-fluid">
@@ -41,6 +53,7 @@
             ?>
         </div>
     </div>
+
 
     <!-- Post a comment -->
     <div class="container my-3">
