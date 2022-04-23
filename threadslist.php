@@ -29,6 +29,19 @@
     $catTitle = $row['category_title'];
     ?>
 
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $problem_title = $_POST['problem_title'];
+        $problem_desc = $_POST['problem_desc'];
+        $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES (NULL, '$problem_title', '$problem_desc', '$id', '0', current_timestamp());";
+        $result = mysqli_query($conn, $sql);
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success ! </strong> Your thread has been posted successfully. Please wait for the community to respond.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+    ?>
+
     <!-- Rules -->
     <div class="container-fluid">
         <div class="row">
@@ -49,6 +62,23 @@
         </div>
     </div>
 
+    <!-- Ask Question section -->
+    <div class="container my-3">
+        <p class="fs-3">Ask your Question </p>
+        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+            <div class="mb-3">
+                <label for="problem_title" class="form-label">Problem Title</label>
+                <input type="text" class="form-control" id="problem_title" name="problem_title" aria-describedby="emailHelp">
+                <div id="problem_title_help" class="form-text">Keep the title short and crisp</div>
+            </div>
+            <div class="mb-3">
+                <label for="problem_desc" class="form-label">Elaborate the problem</label>
+                <textarea class="form-control" id="problem_desc" name="problem_desc" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger">POST</button>
+        </form>
+    </div>
+
     <div class="container-fluid">
         <p class="fs-3 text-center">Browse Questions for <?php echo $catTitle ?></p>
         <div class="container-xl my-2">
@@ -58,21 +88,23 @@
                 $id = $_GET['catid'];
                 $sql = "SELECT * FROM `threads` WHERE `thread_cat_id` = $id;";
                 $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $thread_id = $row['thread_id'];
-                $title = $row['thread_title'];
-                $desc = $row['thread_desc'];
-                if ($title) {
-                    echo ' <div class="card p-2 m-3">
-                    <h5 class="card-header">Featured</h5>
+                if (mysqli_num_rows($result) == 0)
+                    echo '<div class="text-center link-danger fs-3" >No threads found ! </div>';
+                else {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $timestamp = $row['timestamp'];
+                        $thread_id = $row['thread_id'];
+                        $title = $row['thread_title'];
+                        $desc = $row['thread_desc'];
+                        echo ' <div class="card p-2 m-3">
+                    <h5 class="card-header" style="color:grey;">Posted on : ' . $timestamp . '</h5>
                     <div class="card-body">
                         <h5 class="card-title">' . $title . '</h5>
-                        <p class="card-text">' . substr($desc, 0, strpos($desc, '.')) . '...</p>
-                        <a href="thread.php?threadid=' . $thread_id . '" class="btn btn-warning" style="color:white;">Go somewhere</a>
+                        <p class="card-text">' . substr($desc, 0, 30) . '...</p>
+                        <a href="thread.php?threadid=' . $thread_id . '" class="btn btn-warning" style="color:white;">See Discussions</a>
                     </div>
                 </div>';
-                } else {
-                    echo '<div class="text-center link-danger fs-3" >No threads found ! </div>';
+                    }
                 }
                 ?>
             </div>

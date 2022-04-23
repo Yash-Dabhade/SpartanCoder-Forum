@@ -23,7 +23,7 @@
     <?php include './partials/_dbconnect.php' ?>
 
 
-    <!-- Rules -->
+    <!-- Thread Details -->
     <div class="container-fluid">
         <div class="row">
             <?php
@@ -42,32 +42,47 @@
         </div>
     </div>
 
+    <!-- Post a comment -->
+    <div class="container my-3">
+        <p class="fs-3">Post a comment </p>
+        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+            <div class="mb-3">
+                <label for="comment" class="form-label">Enter your comment </label>
+                <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger">POST COMMENT</button>
+        </form>
+    </div>
+
+    <!-- Discussions -->
     <div class="container-fluid">
-        <p class="fs-3 text-center">Discussions</p>
+        <p class="fs-3 text-center"> Discussions </p>
         <div class="container-xl my-2">
             <div class="container-md  rounded">
-                <!-- Questions here
+                <!-- Questions here -->
                 <?php
-                $id = $_GET['catid'];
-                $sql = "SELECT * FROM `threads` WHERE `thread_cat_id` = $id;";
+                $id = $_GET['threadid'];
+                $sql = "SELECT * FROM `comments` WHERE `thread_id` = $id;";
                 $result = mysqli_query($conn, $sql);
-                $row = mysqli_fetch_assoc($result);
-                $thread_id = $row['thread_id'];
-                $title = $row['thread_title'];
-                $desc = $row['thread_desc'];
-                if ($title) {
-                    echo ' <div class="card p-2 m-3">
-                    <h5 class="card-header">Featured</h5>
+                if (mysqli_num_rows($result) == 0)
+                    echo '<div class="text-center link-danger fs-3" >No Comments found , Be the first one to comment! </div>';
+                else {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $timestamp = $row['timestamp'];
+                        $thread_id = $row['thread_id'];
+                        $comment_by = $row['comment_by'];
+                        $comment = $row['comment'];
+                        echo ' <div class="card p-2 m-3">
+                    <h5 class="card-header" style="color:grey;">Posted on : ' . $timestamp . '</h5>
                     <div class="card-body">
-                        <h5 class="card-title">' . $title . '</h5>
-                        <p class="card-text">' . substr($desc, 0, strpos($desc, '.')) . '...</p>
-                        <a href="thread.php?threadid=' . $thread_id . '" class="btn btn-warning" style="color:white;">Go somewhere</a>
+                    </div>
+                        <div class="card-title">Username</div>
+                        <p class="card-text">' . $comment . '</p>
                     </div>
                 </div>';
-                } else {
-                    echo '<div class="text-center link-danger fs-3" >No threads found ! </div>';
+                    }
                 }
-                ?> -->
+                ?>
             </div>
         </div>
 
