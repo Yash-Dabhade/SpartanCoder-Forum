@@ -39,14 +39,14 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:
             ';
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     echo '<form class="d-flex" method="get" action="search.php">
-                  <input class="form-control mr-sm-2 mx-2" name="search" type="search" actiion="search.php" placeholder="Search" aria-label="Search">
+                  <input class="form-control mr-sm-2 mx-2 text-light" name="search" type="search" actiion="search.php" placeholder="Search" aria-label="Search">
                   <button class="btn btn-warning my-2 my-sm-0 mx-2" type="submit">Search</button>
                     <a href="partials/_logout.php" class="btn btn-outline-warning ml-2">Logout</a>
                     </form>';
 } else {
     echo '<form class="d-flex">
-                  <input class="form-control mr-sm-2 mx-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-success my-2 my-sm-0 mx-2" type="submit">Search</button>
+                  <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-warning text-light my-2 my-sm-0 mx-2" type="submit">Search</button>
                   </form>
                   <button class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
                   <button class="btn btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#signModal">Register</button>';

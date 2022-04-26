@@ -56,16 +56,22 @@
 
 
     <!-- Post a comment -->
-    <div class="container my-3">
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        echo '<div class="container my-3">
         <p class="fs-3">Post a comment </p>
-        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+        <form action="' . $_SERVER['REQUEST_URI'] . '" method="POST">
             <div class="mb-3">
                 <label for="comment" class="form-label">Enter your comment </label>
                 <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-danger">POST COMMENT</button>
         </form>
-    </div>
+    </div>';
+    } else {
+        echo '<div class="text-center link-warning fs-4" >Please Log in to be able to post comments! </div>';
+    }
+    ?>
 
     <!-- Discussions -->
     <div class="container-fluid">
@@ -85,7 +91,7 @@
                         $thread_id = $row['thread_id'];
                         $comment_by = $row['comment_by'];
                         $comment = $row['comment'];
-                        echo ' <div class="card p-2 m-3">
+                        echo ' <div class="card p-2 m-3" >
                     <h5 class="card-header" style="color:grey;">Posted on : ' . $timestamp . '</h5>
                     <div class="card-body">
                     </div>

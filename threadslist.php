@@ -63,9 +63,11 @@
     </div>
 
     <!-- Ask Question section -->
-    <div class="container my-3">
+    <?php
+    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+        echo '<div class="container my-3">
         <p class="fs-3">Ask your Question </p>
-        <form action="<?php $_SERVER['REQUEST_URI'] ?>" method="POST">
+        <form action="' . $_SERVER['REQUEST_URI'] . '" method="POST">
             <div class="mb-3">
                 <label for="problem_title" class="form-label">Problem Title</label>
                 <input type="text" class="form-control" id="problem_title" name="problem_title" aria-describedby="emailHelp">
@@ -77,7 +79,11 @@
             </div>
             <button type="submit" class="btn btn-danger">POST</button>
         </form>
-    </div>
+    </div>';
+    } else {
+        echo '<div class="text-center link-warning fs-4" >Please log in to ask questions !   </div> </div>';
+    }
+    ?>
 
     <div class="container-fluid">
         <p class="fs-3 text-center">Browse Questions for <?php echo $catTitle ?></p>
