@@ -21,6 +21,19 @@
 
     <?php include './partials/_header.php' ?>
     <?php include './partials/_dbconnect.php' ?>
+    <?php
+    if (isset($_GET['signupsuccess']) && $_GET['signupsuccess'] == "true") {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success !</strong> Registration Successful, Login next time.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    } else if (isset($_GET['signupsuccess']) && $_GET['signupsuccess'] == "false" && isset($_GET['error'])) {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error !</strong> ' . $_GET['error'] . '
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+    }
+    ?>
 
     <!-- Intro to the forum -->
     <div class="container m-5">
@@ -63,8 +76,8 @@
 
                 echo '
                 <div class="col">
-                    <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4 h-100" style="width: 18rem;">
-                        <img src=' . $catImg . ' class="card-img-top img-thumbnail" alt="...">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4 h-100" style="width: 18rem; height:auto;">
+                        <img src=' . $catImg . ' class="card-img-top img-thumbnail" style="height:250px; width:auto;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">' . $catTitle . '</h5>
                             <p class="card-text">' . substr($catDesc, 0, 45) . '...</p>  
