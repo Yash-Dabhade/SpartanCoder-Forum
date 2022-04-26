@@ -9,15 +9,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/projects/StudyForum/partials/_handlelogin.php" method="POST">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" id="loginEmail" name="loginEmail" aria-describedby="emailHelp">
 
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" class="form-control" name="loginPass" id="loginPass">
                     </div>
 
             </div>
