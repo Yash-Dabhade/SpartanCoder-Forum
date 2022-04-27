@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['loggedin'] = true;
             $_SESSION['sno'] = $row['sno'];
             $_SESSION['useremail'] = $email;
-            echo "logged in" . $email;
         }
         header("Location:  /projects/StudyForum/index.php");
     }

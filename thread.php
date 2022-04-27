@@ -25,7 +25,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_GET['threadid'];
         $comment = $_POST['comment'];
-        $user_id = 0;
+        $user_id = $_SESSION['sno'];
         $sql = "INSERT INTO `comments` (`comment_id`, `comment`, `comment_by`, `timestamp`, `thread_id`) VALUES (NULL, '$comment', '$user_id', current_timestamp(), '$id')";
         $result = mysqli_query($conn, $sql);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -91,12 +91,17 @@
                         $thread_id = $row['thread_id'];
                         $comment_by = $row['comment_by'];
                         $comment = $row['comment'];
+                        //fetching user details
+                        $sql2 = "SELECT user_email FROM `users` WHERE sno='$comment_by'";
+                        $result2 = mysqli_query($conn, $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
+
+
                         echo ' <div class="card p-2 m-3" >
-                    <h5 class="card-header" style="color:grey;">Posted on : ' . $timestamp . '</h5>
-                    <div class="card-body">
+                    <h5 class="card-header" style="color:grey;">Commented By : ' . $row2['user_email'] . '</h5>
+                    <div class="card-body ">
                     </div>
-                        <div class="card-title">Username</div>
-                        <p class="card-text">' . $comment . '</p>
+                        <p class="card-title mx-3">' . $comment . '</p>
                     </div>
                 </div>';
                     }

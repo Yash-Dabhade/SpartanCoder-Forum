@@ -33,7 +33,8 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $problem_title = $_POST['problem_title'];
         $problem_desc = $_POST['problem_desc'];
-        $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES (NULL, '$problem_title', '$problem_desc', '$id', '0', current_timestamp());";
+        $user_id = $_SESSION['sno'];
+        $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES (NULL, '$problem_title', '$problem_desc', '$id', '$user_id', current_timestamp());";
         $result = mysqli_query($conn, $sql);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success ! </strong> Your thread has been posted successfully. Please wait for the community to respond.
@@ -102,8 +103,16 @@
                         $thread_id = $row['thread_id'];
                         $title = $row['thread_title'];
                         $desc = $row['thread_desc'];
+                        $thread_user_id = $row['thread_user_id'];
+                        //fetching user details
+                        $sql2 = "SELECT user_email FROM `users` WHERE sno='$thread_user_id'";
+                        $result2 = mysqli_query($conn, $sql2);
+                        $row2 = mysqli_fetch_assoc($result2);
+
+
+
                         echo ' <div class="card p-2 m-3">
-                    <h5 class="card-header" style="color:grey;">Posted on : ' . $timestamp . '</h5>
+                    <h5 class="card-header" style="color:grey;">Posted by ' . $row2['user_email'] . ' : ' . $timestamp . '</h5>
                     <div class="card-body">
                         <h5 class="card-title">' . $title . '</h5>
                         <p class="card-text">' . substr($desc, 0, 30) . '...</p>
