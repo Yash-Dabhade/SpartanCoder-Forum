@@ -26,6 +26,8 @@
         $id = $_GET['threadid'];
         $comment = $_POST['comment'];
         $user_id = $_SESSION['sno'];
+        $comment = str_replace("<", "&lt;", $comment);
+        $comment = str_replace(">", "&gt;", $comment);
         $sql = "INSERT INTO `comments` (`comment_id`, `comment`, `comment_by`, `timestamp`, `thread_id`) VALUES (NULL, '$comment', '$user_id', current_timestamp(), '$id')";
         $result = mysqli_query($conn, $sql);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">

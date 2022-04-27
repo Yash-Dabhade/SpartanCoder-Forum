@@ -34,6 +34,12 @@
         $problem_title = $_POST['problem_title'];
         $problem_desc = $_POST['problem_desc'];
         $user_id = $_SESSION['sno'];
+
+        $problem_title = str_replace("<", "&lt;", $problem_title);
+        $problem_title = str_replace(">", "&gt;", $problem_title);
+        $problem_desc = str_replace("<", "&lt;", $problem_desc);
+        $problem_desc = str_replace(">", "&gt;", $problem_desc);
+
         $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES (NULL, '$problem_title', '$problem_desc', '$id', '$user_id', current_timestamp());";
         $result = mysqli_query($conn, $sql);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
