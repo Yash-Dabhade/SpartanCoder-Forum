@@ -15,6 +15,11 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="./styles/indexPage.css">
     <title>SpartanCoders Forum</title>
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body>
@@ -44,7 +49,7 @@
                         Computer Science Spartans
                     </span>
                 </h1>
-                <button class="btn my-3 btn-warning fw-bold fs-3 font-monospace text-light placeholder-wave shadow-sm " style="width:20rem">Explore Now</button>
+
             </div>
             <div class="col">
                 <img src="./res/landingPage/top.jpg" class="img-fluid " alt="">
@@ -58,7 +63,7 @@
         <div class="rounded-pill " style="background-color: #2A0944;">
             <h2 class="text-center my-4" style="font-family: 'Kanit', sans-serif; color:white">Trending Categories</h2>
         </div>
-        <div class="row my-2 row-cols-1 row-cols-md-4 g-4  align-items-center justify-content-center rounded" id="trending">
+        <div class="row my-0 row-cols-1 row-cols-md-4 g-4  align-items-center justify-content-center rounded" id="trending">
 
             <!--Fetching data from the categories  -->
             <?php

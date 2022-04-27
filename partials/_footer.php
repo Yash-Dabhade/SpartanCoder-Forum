@@ -56,19 +56,19 @@ echo ' <!-- Footer -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Products
+                        Categories
                     </h6>
                     <p>
-                        <a href="#!" class="text-reset">Angular</a>
+                        <a href="#!" class="text-reset">Python</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">React</a>
+                        <a href="#!" class="text-reset">React JS</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Vue</a>
+                        <a href="#!" class="text-reset">Node JS</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Laravel</a>
+                        <a href="#!" class="text-reset">C++</a>
                     </p>
                 </div>
                 <!-- Grid column -->
