@@ -25,7 +25,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_GET['threadid'];
         $comment = $_POST['comment'];
-        $user_id = $_SESSION['sno'];
+        $user_id = $_SESSION['user_id'];
         $comment = str_replace("<", "&lt;", $comment);
         $comment = str_replace(">", "&gt;", $comment);
         $sql = "INSERT INTO `comments` (`comment_id`, `comment`, `comment_by`, `timestamp`, `thread_id`) VALUES (NULL, '$comment', '$user_id', current_timestamp(), '$id')";
@@ -94,7 +94,7 @@
                         $comment_by = $row['comment_by'];
                         $comment = $row['comment'];
                         //fetching user details
-                        $sql2 = "SELECT user_email FROM `users` WHERE sno='$comment_by'";
+                        $sql2 = "SELECT user_email FROM `users` WHERE user_id='$comment_by'";
                         $result2 = mysqli_query($conn, $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
 

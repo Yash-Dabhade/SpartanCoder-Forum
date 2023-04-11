@@ -13,8 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($pass, $row['user_pass'])) {
             session_start();
             $_SESSION['loggedin'] = true;
-            $_SESSION['sno'] = $row['sno'];
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['useremail'] = $email;
+            if ($email == "admin@gmail.com") {
+                echo $email;
+                header("Location:  /projects/StudyForum/admin/dashboard.php");
+                exit();
+            }
         }
         header("Location:  /projects/StudyForum/index.php");
     }

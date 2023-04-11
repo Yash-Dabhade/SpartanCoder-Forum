@@ -33,7 +33,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $problem_title = $_POST['problem_title'];
         $problem_desc = $_POST['problem_desc'];
-        $user_id = $_SESSION['sno'];
+        $user_id = $_SESSION['user_id'];
 
         $problem_title = str_replace("<", "&lt;", $problem_title);
         $problem_title = str_replace(">", "&gt;", $problem_title);
@@ -42,7 +42,12 @@
 
         $sql = "INSERT INTO `threads` (`thread_id`, `thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES (NULL, '$problem_title', '$problem_desc', '$id', '$user_id', current_timestamp());";
         $result = mysqli_query($conn, $sql);
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+        if (!$result)   echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error ! </strong> Your thread has been not posted successfully. Please wait for the community to respond.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
+        else
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success ! </strong> Your thread has been posted successfully. Please wait for the community to respond.
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
@@ -111,7 +116,7 @@
                         $desc = $row['thread_desc'];
                         $thread_user_id = $row['thread_user_id'];
                         //fetching user details
-                        $sql2 = "SELECT user_email FROM `users` WHERE sno='$thread_user_id'";
+                        $sql2 = "SELECT user_email FROM `users` WHERE user_id='$thread_user_id'";
                         $result2 = mysqli_query($conn, $sql2);
                         $row2 = mysqli_fetch_assoc($result2);
 
