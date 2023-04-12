@@ -143,13 +143,12 @@
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="form-group mt-2">
                     <label for="title">Email</label>
-                    <input type="text" required class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title" name="email">
+                    <input type="text" required class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter email" name="email">
 
                 </div>
                 <div class="form-group mt-2">
                     <label for="description">Password</label>
-                    <input required type="text" class="form-control" name="password" id="Description" aria-describedby="emailHelp" placeholder="Enter Short and Precise Description">
-
+                    <input required type="text" class="form-control" name="password" id="Description" aria-describedby="emailHelp" placeholder="Enter Password">
                 </div>
 
 
