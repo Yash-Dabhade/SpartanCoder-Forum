@@ -5,7 +5,7 @@ include '../partials/_signmodal.php';
 
 echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #2A0944;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/projects/StudyForum/">
+        <a class="navbar-brand" href="/projects/StudyForum/admin/dashboard.php">
             <img src="../res/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
             SpartanCoders Forum
         </a>
