@@ -77,11 +77,7 @@
             <?php
             $sql = "SELECT * FROM `categories`";
             $result = mysqli_query($conn, $sql);
-            $limit = 0;
             while ($row = mysqli_fetch_assoc($result)) {
-                $limit + 1;
-                if ($limit > 8)
-                    break;
                 $catID = $row['category_id'];
                 $catTitle = $row['category_title'];
                 $catDesc = $row['category_description'];
@@ -89,11 +85,11 @@
 
                 echo '
                 <div class="col">
-                    <div class="card shadow-lg p-3 mb-5 bg-body rounded my-4 h-100" style="width: 18rem; height:auto;">
-                        <img src=' . $catImg . ' class="card-img-top img-thumbnail" style="height:250px; width:auto;" alt="...">
+                    <div class="card shadow-lg p-2 mb-5 bg-body rounded my-4 h-80" style="width: 16rem;">
+                        <img src=' . $catImg . ' class="card-img-top img-thumbnail" style="height:220px; width:auto;" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">' . $catTitle . '</h5>
-                            <p class="card-text">' . substr($catDesc, 0, 45) . '...</p>  
+                            <p class="card-text">' . substr($catDesc, 0, 35) . '...</p>  
                         </div>
                         <div class="card-footer">
                              <a href="threadslist.php?catid=' . $catID . '" class="btn btn-primary rounded-pill " style="width:100%">Visit Thread</a>
@@ -105,12 +101,33 @@
         </div>
 
     </div>
+
+    <!-- developers info -->
+    <div class="main">
+
+        <section id="developers" class="developers__section">
+            <h2>Developers</h2>
+
+            <ol>
+                <li>
+                    <img src="https://avatars.githubusercontent.com/u/82750191?v=4" width="200px">
+                    <p>Siddhi Thoke</p>
+                    <a href="https://www.github.com/SiddhiT28">@SiddhiT28</a>
+                </li>
+                <li>
+                    <img src="https://avatars.githubusercontent.com/u/64470535?v=4" width="200px">
+                    <p>Yash Dabhade</p>
+                    <a href="https://www.github.com/Yash-Dabhade">@Yash-Dabhade</a>
+                </li>
+                <li>
+                    <img src="https://avatars.githubusercontent.com/u/72993471?v=4" width="200px">
+                    <p>Pratham Yadav</p>
+                    <a href="https://www.github.com/ypratham">@ypratham</a>
+                </li>
+            </ol>
+        </section>
+
     </div>
-
-
-
-
-
 
     <?php include './partials/_footer.php' ?>
     <!-- Optional JavaScript; choose one of the two! -->

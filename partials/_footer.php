@@ -1,5 +1,11 @@
 <?php
 
+$sql = "SELECT * FROM `categories`";
+$result = mysqli_query($conn, $sql);
+
+
+
+
 echo ' <!-- Footer -->
 <footer class="text-center text-lg-start text-muted " style="background-color: #2A0944;">
     <!-- Section: Social media -->
@@ -58,18 +64,23 @@ echo ' <!-- Footer -->
                     <h6 class="text-uppercase fw-bold mb-4">
                         Categories
                     </h6>
+';
+$limit = 0;
+while ($row = mysqli_fetch_assoc($result)) {
+    if ($limit >= 4) break;
+    $limit += 1;
+    $catID = $row['category_id'];
+    $catTitle = $row['category_title'];
+    $catDesc = $row['category_description'];
+    $catImg = $row['imgurl'];
+    echo '
                     <p>
-                        <a href="#!" class="text-reset">Python</a>
+                         <a href="./threadslist.php?catid=' . $catID . '" 
+                        class="text-reset">' . $catTitle . '</a>
                     </p>
-                    <p>
-                        <a href="#!" class="text-reset">React JS</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">Node JS</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text-reset">C++</a>
-                    </p>
+                    ';
+}
+echo '                   
                 </div>
                 <!-- Grid column -->
 
@@ -86,7 +97,7 @@ echo ' <!-- Footer -->
                         <a href="#!" class="text-reset">Settings</a>
                     </p>
                     <p>
-                        <a href="#!" class="text-reset">Orders</a>
+                        <a href="#!" class="text-reset">Career</a>
                     </p>
                     <p>
                         <a href="#!" class="text-reset">Help</a>
@@ -116,7 +127,7 @@ echo ' <!-- Footer -->
 
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2022 Copyright | All Rights Reserved
+        © 2023 Copyright | All Rights Reserved
     </div>
     <!-- Copyright -->
 </footer>
