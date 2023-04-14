@@ -22,6 +22,35 @@
         body {
             scroll-behavior: smooth;
         }
+
+        @media only screen and (max-width: 750px) {
+            body {
+
+                display: flex;
+                width: fit-content;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 20px;
+
+                height: max-content;
+
+            }
+
+            #intro {
+                margin: 0px;
+                gap: 40px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            #developers {
+                height: fit-content;
+            }
+        }
     </style>
 </head>
 
@@ -50,8 +79,7 @@
 
     <!-- Intro to the forum -->
     <div class="container m-5">
-
-        <div class="row align-items-center">
+        <div class="row align-items-center" id="intro">
             <div class="col">
                 <h1 class="display-5">Welcome to the online discussion forum for <span class=" font-monospace fw-bold placeholder-glow" style="color:#F2B23E ">
                         Computer Science Spartans
@@ -128,8 +156,9 @@
         </section>
 
     </div>
-
-    <?php include './partials/_footer.php' ?>
+    <div id="footer">
+        <?php include './partials/_footer.php' ?>
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

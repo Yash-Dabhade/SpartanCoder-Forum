@@ -40,6 +40,8 @@
 
 
 
+
+
         #viewTable {
             padding: 20px;
             width: 65%;
@@ -56,6 +58,26 @@
         .btn {
             /* background-color: #641086; */
             color: white;
+        }
+
+        @media only screen and (max-width: 750px) {
+            #container {
+                flex-direction: column;
+                gap: 30px;
+                font-size: 10px;
+                height: fit-content;
+            }
+
+            .heading {
+                font-size: 18px;
+            }
+
+            #addForm {
+                gap: 30px;
+                width: 90%;
+            }
+
+
         }
     </style>
 </head>

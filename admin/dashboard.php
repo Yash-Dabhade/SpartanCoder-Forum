@@ -14,6 +14,8 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="./styles/indexPage.css">
+    <link rel="stylesheet" href="../styles/dashboard.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title>SpartanCoders Forum</title>
     <style>
@@ -103,33 +105,6 @@
             width: 800px;
             height: 300px;
         }
-
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            border-bottom: 1px dotted black;
-            /* If you want dots under the hoverable text */
-        }
-
-        /* Tooltip text */
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-            border-radius: 6px;
-
-            /* Position the tooltip text - see examples below! */
-            position: absolute;
-            z-index: 1;
-        }
-
-        /* Show the tooltip text when you mouse over the tooltip container */
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-        }
     </style>
 </head>
 
@@ -144,7 +119,7 @@
 
         <!-- status cards container -->
         <div class="cardContainer">
-            <div class="card2">
+            <div class="card2 avatar" data-tooltip="Categories">
 
                 <div class="cardTop ">
                     <img src="../res/categories.png" alt="" class="cardIcon">
@@ -152,22 +127,19 @@
 
                 </div>
             </div>
-            <div class="card2 ">
-
+            <div class="card2 avatar" data-tooltip="Questions">
                 <div class="cardTop ">
                     <img src="../res/questions.png" alt="" class="cardIcon">
                     <h3 class="m-2"><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `threads`")); ?></h3>
                 </div>
             </div>
-            <div class="card2">
-
+            <div class="card2 avatar" data-tooltip="Comments">
                 <div class="cardTop ">
                     <img src="../res/comments.png" alt="" class="cardIcon">
                     <h3 class="m-2"><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `comments`")); ?></h3>
                 </div>
             </div>
-            <div class="card2">
-
+            <div class="card2 avatar" data-tooltip="Active Users">
                 <div class="cardTop ">
                     <img src="../res/users.png" alt="" class="cardIcon">
                     <h3 class="m-2"><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users`")); ?></h3>
