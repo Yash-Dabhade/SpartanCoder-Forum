@@ -82,12 +82,12 @@
         <form action="' . $_SERVER['REQUEST_URI'] . '" method="POST">
             <div class="mb-3">
                 <label for="problem_title" class="form-label">Problem Title</label>
-                <input type="text" class="form-control" id="problem_title" name="problem_title" aria-describedby="emailHelp">
+                <input type="text" required class="form-control" id="problem_title" name="problem_title" aria-describedby="emailHelp">
                 <div id="problem_title_help" class="form-text">Keep the title short and crisp</div>
             </div>
             <div class="mb-3">
                 <label for="problem_desc" class="form-label">Elaborate the problem</label>
-                <textarea class="form-control" id="problem_desc" name="problem_desc" rows="3"></textarea>
+                <textarea class="form-control" required id="problem_desc" name="problem_desc" rows="3"></textarea>
             </div>
             <button type="submit" class="btn btn-danger">POST</button>
         </form>

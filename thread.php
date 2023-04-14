@@ -65,7 +65,7 @@
         <form action="' . $_SERVER['REQUEST_URI'] . '" method="POST">
             <div class="mb-3">
                 <label for="comment" class="form-label">Enter your comment </label>
-                <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+                <textarea class="form-control" required id="comment" name="comment" rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-danger">POST COMMENT</button>
         </form>
@@ -79,6 +79,7 @@
     <div class="container-fluid">
         <p class="fs-3 text-center"> Discussions </p>
         <div class="container-xl my-2">
+
             <div class="container-md  rounded">
                 <!-- Questions here -->
                 <?php
