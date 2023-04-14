@@ -40,6 +40,11 @@
         <strong>Error !</strong> ' . $_GET['error'] . '
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>';
+    } else if (isset($_GET['loginsuccess']) && $_GET['loginsuccess'] == "false" && isset($_GET['error'])) {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error !</strong> ' . $_GET['error'] . '
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>';
     }
     ?>
 

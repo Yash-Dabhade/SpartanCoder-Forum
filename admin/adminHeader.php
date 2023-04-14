@@ -15,9 +15,12 @@ echo '<nav class="navbar navbar-expand-lg navbar-dark " style="background-color:
         </button>
                        ';
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-    echo '<div class="d-flex justify-content-end">
+    echo '<div class="d-flex justify-content-end gap-2">
+                    <a href="./dashboard.php" class="btn btn-success ml-2">Dashboard</a>
+                    <a href="../index.php" class="btn btn-danger ml-2">Forum</a>
                     <a href="../partials/_logout.php" class="btn btn-outline-warning ml-2">Logout</a>
-            </div>';
+                  
+    </div>';
 } else {
     echo '<div style="float:right;">
     <button class="btn  btn-outline-warning me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>

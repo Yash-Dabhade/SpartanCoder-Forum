@@ -82,7 +82,7 @@
             }
         }
 
-        .btn {
+        .btn-custom {
             background-color: #641086;
             color: white;
         }

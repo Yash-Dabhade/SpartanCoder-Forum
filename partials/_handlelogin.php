@@ -1,5 +1,4 @@
 <?php
-$showError = "false";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include '_dbconnect.php';
     $email = $_POST['loginEmail'];
@@ -16,12 +15,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['useremail'] = $email;
             if ($email == "admin@gmail.com") {
-                echo $email;
+                $_SESSION['isAdmin'] = true;
                 header("Location:  /projects/StudyForum/admin/dashboard.php");
                 exit();
             }
+        } else {
+            $showError = "User does not exist or Password do not match";
+            header("Location: /projects/StudyForum/index.php?loginsuccess=false&error=$showError");
+            exit();
         }
         header("Location:  /projects/StudyForum/index.php");
+    } else {
+        $showError = "User does not exist or Password do not match";
+        header("Location: /projects/StudyForum/index.php?loginsuccess=false&error=$showError");
+        exit();
     }
-    header("Location: /projects/StudyForum/index.php");
+    header("Location:  /projects/StudyForum/index.php");
 }
